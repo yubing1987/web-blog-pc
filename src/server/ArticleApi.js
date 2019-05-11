@@ -3,7 +3,7 @@ import Request from "../utils/Request"
 let request = new Request();
 class ArticleApi{
     static queryArticleList(page, size, key){
-        return request.get("/api/manage/article/list.json",{page: page, size: size, key: key});
+        return request.get("/api/manage/article/list",{page: page, size: size, key: key});
     }
 
     static getArticleById(id){
@@ -11,11 +11,11 @@ class ArticleApi{
     }
 
     static deleteArticle(id){
-        return request.post("/api/article/" + id +"/deleted");
+        return request.post("/api/manage/article/" + id +"/del");
     }
 
     static articleEdited(article){
-        return request.post("/api/article/edited", article);
+        return request.post("/api/manage/article/edit", article);
     }
 
     static addArticle(article){

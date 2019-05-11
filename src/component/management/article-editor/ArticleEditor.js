@@ -70,10 +70,6 @@ class ArticleEditor  extends Component{
         });
     };
 
-    updateTag(id){
-        return ArticleApi.updateArticleTag(id, this.state.tags);
-    }
-
     saveArticle = () => {
         if(this.state.article.title.length === 0){
             message.error("文章标题不能为空!");
@@ -96,7 +92,6 @@ class ArticleEditor  extends Component{
         if(article.id) {
             ArticleApi.articleEdited(article)
                 .then(() => {
-                    this.updateTag(article.id);
                     message.success("文章保存成功");
                 });
         }
@@ -118,52 +113,6 @@ class ArticleEditor  extends Component{
                 });
         }
     };
-
-    articlePublish = () => {
-        if (this.state.article.title.length === 0) {
-            message.error("文章标题不能为空!");
-            return;
-        }
-        if (this.state.article.content.length === 0) {
-            message.error("文章内容不能为空!");
-            return;
-        }
-        if (this.state.article.abstractContent.length === 0) {
-            message.error("文章内容不能为空!");
-            return;
-        }
-        if (this.state.fileList.length !== 1) {
-            message.error("必须要要有一张封面图片!");
-            return;
-        }
-        let article = this.state.article;
-        article.picture = this.state.fileList[0].response.content;
-        article.drag = true;
-        if (article.id) {
-            ArticleApi.articleEdited(article)
-                .then(() => {
-                    this.setState({article: article});
-                    this.publish();
-                });
-        }
-        else {
-            ArticleApi.addArticle(article)
-                .then((data) => {
-                    article.id = data.id;
-                    window.location.hash = this.props.location.pathname + "?id=" + article.id;
-                    this.setState({article: article});
-                    this.publish();
-                });
-        }
-    };
-
-    publish(){
-        ArticleApi.articlePublished(this.state.article)
-            .then(() => {
-                message.success("文章发布成功");
-                this.updateTag(this.state.article.id);
-            });
-    }
 
     handleChange = ({ fileList }) => {
         if(fileList.length > 1){
@@ -239,12 +188,6 @@ class ArticleEditor  extends Component{
                     <TextArea onChange={this.abstractChange} rows={4}  autosize={false} value={this.state.article.abstractContent}/>
                 </div>
                 <div className = {"view-item"}>
-                    <span>标签：</span>
-                    <ArticleTagView editable={true} tags={this.state.tags}
-                        handleTag = {(tags) => {this.setState({tags: tags})}}
-                    />
-                </div>
-                <div className = {"view-item"}>
                     <span>封面图片：</span>
                 </div>
                 <div className = {"view-item picture-view"}>
@@ -264,8 +207,7 @@ class ArticleEditor  extends Component{
                     </Modal>
                 </div>
                 <div className = {"view-item"} style={{"textAlign":"center"}}>
-                    <Button onClick={this.saveArticle} type={"primary"} style={{"marginRight": "20px"}} >保存</Button>
-                    <Button onClick={this.articlePublish}>发布</Button>
+                    <Button onClick={this.saveArticle} type={"primary"} >保存</Button>
                 </div>
             </div>
         }
