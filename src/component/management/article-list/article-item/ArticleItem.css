@@ -1,0 +1,33 @@
+.article-panel{
+    border: solid 1px #ccc;
+    padding: 10px;
+    margin-bottom: 5px;
+    position: relative;
+    height: 90px;
+}
+
+.article-panel>a{
+    color: #282c34;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.article-tag{
+    padding: 4px 0;
+}
+
+.article-abstract{
+    margin-top: 5px;
+    font-size: 10px;
+    font-style: italic;
+}
+
+.article-content{
+    padding-right: 80px;
+}
+
+.article-button{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
