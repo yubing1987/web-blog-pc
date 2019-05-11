@@ -3,8 +3,6 @@ import ArticleApi from "../../../server/ArticleApi"
 import {Alert, Input, Upload, Icon, Modal, message, Button} from "antd";
 import "./ArticleEditor.css"
 
-import ArticleTagView from "../article-tag-view/ArticleTagView";
-
 const { TextArea } = Input;
 
 class ArticleEditor  extends Component{

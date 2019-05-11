@@ -3,6 +3,7 @@ import {NavLink, Redirect, Route} from 'react-router-dom'
 import {Icon, Layout, Menu,} from 'antd';
 import ArticleList from "./article-list/ArticleList";
 import ArticleEditor from "./article-editor/ArticleEditor";
+import TagList from "./tag-list/TagList";
 
 const {
     Content, Sider,
@@ -45,8 +46,9 @@ class Management extends Component {
                             <Menu.Item key="/management/list"><NavLink to={"/management/list"}><Icon type="appstore" />文章列表</NavLink></Menu.Item>
                             <Menu.Item key="/management/edit"><NavLink to={"/management/edit"}><Icon type="edit" />写文章</NavLink></Menu.Item>
                         </SubMenu>
+                        <Menu.Item key="/management/tags"><NavLink to={"/management/tags"}><Icon type="tags" />标签管理</NavLink></Menu.Item>
                         <SubMenu
-                            key="sub2"
+                            key="sub3"
                             title={<span><Icon type="setting" /><span>系统管理</span></span>}
                         >
                             <Menu.Item key="6"><Icon type="user" />用户管理</Menu.Item>
@@ -58,6 +60,7 @@ class Management extends Component {
                         <div style={{ padding: 24, background: '#fff', minHeight: "100%" }}>
                             <Route path="/management/list" component={ArticleList}/>
                             <Route path="/management/edit" component={ArticleEditor}/>
+                            <Route path="/management/tags" component={TagList}/>
                         </div>
                     </Content>
                 </Layout>

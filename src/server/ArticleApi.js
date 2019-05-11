@@ -21,30 +21,6 @@ class ArticleApi{
     static addArticle(article){
         return request.post("/api/manage/article", article);
     }
-
-    static articlePublished(article){
-        return request.post("/api/article/" + article.id + "/published/true");
-    }
-
-    static getRelatedArticle(id){
-        return request.get("/api/relation/" + id);
-    }
-
-    static getUnrelatedArticle(id, key){
-        return request.get("/api/relation/unrelated/" + id,{key: key});
-    }
-
-    static addRelatedArticle(id1, id2){
-        return request.post("/api/relation/create/" + id1 + "/" + id2);
-    }
-
-    static delRelatedArticle(id1, id2){
-        return request.post("/api/relation/deleted/" + id1 + "/" + id2);
-    }
-
-    static updateArticleTag(id, tag){
-        return request.post("/api/article/tag/" + id, tag);
-    }
 }
 
 export default ArticleApi;
