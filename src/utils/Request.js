@@ -26,7 +26,7 @@ class Request {
                 .end((err, res) => {
                     if(err){
                         if(res.status === 401){
-                            window.location.href = "/login";
+                            window.location.href = "/login?back_url=" + window.location.href;
                             return;
                         }
                         setTimeout(() => {
@@ -52,7 +52,7 @@ class Request {
                 .end((err, res) => {
                     if (err) {
                         if(res.status === 401){
-                            window.location.href = "/login";
+                            window.location.href = "/login?back_url=" + window.location.href;
                             return;
                         }
                         setTimeout(() => {

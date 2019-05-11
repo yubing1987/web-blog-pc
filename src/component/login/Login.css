@@ -1,0 +1,18 @@
+.login-background{
+    background: #ccc;
+    height: 100%;
+    width: 100%;
+    padding-top: 200px;
+}
+
+.login-panel{
+    width: 400px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px 20px 1px 20px;
+}
+
+.login-form-button {
+    width: 100%;
+}

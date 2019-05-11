@@ -6,10 +6,6 @@ class ArticleApi{
         return request.get("/api/manage/article/list.json",{page: page, size: size, key: key});
     }
 
-    static queryPublishedArticleList(page, size, key){
-        return request.get("/api/article/list/published",{page: page, size: size, key: key});
-    }
-
     static getArticleById(id){
         return request.get("/api/article/" + id);
     }
@@ -23,7 +19,7 @@ class ArticleApi{
     }
 
     static addArticle(article){
-        return request.post("/api/article/add", article);
+        return request.post("/api/manage/article", article);
     }
 
     static articlePublished(article){
