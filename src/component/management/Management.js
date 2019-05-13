@@ -4,6 +4,8 @@ import {Icon, Layout, Menu,} from 'antd';
 import ArticleList from "./article-list/ArticleList";
 import ArticleEditor from "./article-editor/ArticleEditor";
 import TagList from "./tag-list/TagList";
+import BookList from "./group/books/BookList";
+import CollectionList from "./group/collections/CollectionList";
 
 const {
     Content, Sider,
@@ -48,6 +50,13 @@ class Management extends Component {
                         </SubMenu>
                         <Menu.Item key="/management/tags"><NavLink to={"/management/tags"}><Icon type="tags" />标签管理</NavLink></Menu.Item>
                         <SubMenu
+                            key="sub2"
+                            title={<span><Icon type="apartment" /><span>文章分组</span></span>}
+                        >
+                            <Menu.Item key="/management/books"><NavLink to={"/management/books"}><Icon type="book" />书籍</NavLink></Menu.Item>
+                            <Menu.Item key="/management/collections"><NavLink to={"/management/collections"}><Icon type="container" />专题</NavLink></Menu.Item>
+                        </SubMenu>
+                        <SubMenu
                             key="sub3"
                             title={<span><Icon type="setting" /><span>系统管理</span></span>}
                         >
@@ -61,6 +70,8 @@ class Management extends Component {
                             <Route path="/management/list" component={ArticleList}/>
                             <Route path="/management/edit" component={ArticleEditor}/>
                             <Route path="/management/tags" component={TagList}/>
+                            <Route path="/management/collections" component={CollectionList}/>
+                            <Route path="/management/books" component={BookList}/>
                         </div>
                     </Content>
                 </Layout>

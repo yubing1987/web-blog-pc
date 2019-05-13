@@ -5,7 +5,7 @@ import TagApi from "../../../server/TagApi";
 class TagAddForm extends Component {
     render(){
         const {
-            visible, onCancel, form, type,
+            visible, form, type,
         } = this.props;
         const { getFieldDecorator } = form;
         return (
@@ -14,7 +14,7 @@ class TagAddForm extends Component {
                 title={type==='add'?'添加标签':'编辑标签'}
                 okText="保存"
                 cancelText='取消'
-                onCancel={onCancel}
+                onCancel={() => {this.onCancel()}}
                 onOk={(e) => {this.onAdd(e)}}
             >
                 <Form >
@@ -53,6 +53,11 @@ class TagAddForm extends Component {
 
             }
         });
+    }
+
+    onCancel(){
+        this.props.form.resetFields();
+        this.props.onCancel();
     }
 }
 
