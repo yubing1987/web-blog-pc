@@ -17,10 +17,11 @@ class TagAddForm extends Component {
                 onCancel={onCancel}
                 onOk={(e) => {this.onAdd(e)}}
             >
-                <Form layout={"horizontal"}>
+                <Form >
                     <Form.Item label="标签">
                         {getFieldDecorator('tag', {
                             rules: [{ required: true, message: '标签内容不能为空!' },],
+                            initialValue: this.props.data && this.props.data.tag
                         })(
                             <Input />
                         )}
@@ -34,11 +35,21 @@ class TagAddForm extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                TagApi.addTag(values["tag"])
-                    .then(() => {
-                        this.props.onOk();
-                    })
-                    .catch(() => {})
+                if(this.props.type === 'add') {
+                    TagApi.addTag(values["tag"])
+                        .then(() => {
+                            this.props.onOk();
+                            this.props.form.resetFields();
+                        })
+                        .catch(() => {})
+                } else{
+                    TagApi.editTag(this.props.data.id, values["tag"])
+                        .then(() => {
+                            this.props.onOk();
+                            this.props.form.resetFields();
+                        })
+                        .catch(() => {})
+                }
 
             }
         });
