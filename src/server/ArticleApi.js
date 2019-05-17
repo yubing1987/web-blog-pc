@@ -2,8 +2,8 @@ import Request from "../utils/Request"
 
 let request = new Request();
 class ArticleApi{
-    static queryArticleList(page, size, key){
-        return request.get("/api/manage/article/list.json",{page: page, size: size, key: key});
+    static queryArticleList(page, size, key, hideLoading){
+        return request.get("/api/manage/article/list.json",{page: page, size: size, key: key}, hideLoading);
     }
 
     static getArticleById(id){

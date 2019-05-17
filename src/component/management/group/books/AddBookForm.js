@@ -60,12 +60,13 @@ class AddBookForm extends Component {
                         })
                         .catch(() => {})
                 } else{
-                    // BookApi.editTag(this.props.data.id, values["tag"])
-                    //     .then(() => {
-                    //         this.props.onOk();
-                    //         this.props.form.resetFields();
-                    //     })
-                    //     .catch(() => {})
+                    values["id"] = this.props.data.id;
+                    BookApi.editBook(values)
+                        .then(() => {
+                            this.props.onOk();
+                            this.props.form.resetFields();
+                        })
+                        .catch(() => {})
                 }
             }
         });

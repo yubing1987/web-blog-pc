@@ -95,19 +95,8 @@ class ArticleEditor  extends Component{
         }
         else{
             ArticleApi.addArticle(article)
-                .then((data) => {
-                    message.success("文章保存成功");
-                    this.updateTag(data.id)
-                        .then(() => {
-                            article.id = data.id;
-                            window.location.hash = this.props.location.pathname+"?id=" + article.id;
-                            this.setState({article: article});
-                        })
-                        .catch(() => {
-                            article.id = data.id;
-                            window.location.hash = this.props.location.pathname+"?id=" + article.id;
-                            this.setState({article: article});
-                        });
+                .then(() => {
+                    window.location = "/management/list";
                 });
         }
     };

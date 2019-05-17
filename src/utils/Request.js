@@ -17,8 +17,10 @@ const renderLoading = () => {
 };
 
 class Request {
-    get(url,param){
-        renderLoading();
+    get(url,param, hideLoading){
+        if(!hideLoading) {
+            renderLoading();
+        }
         return new Promise((resolve, reject) => {
             Superagent['get'](url)
                 .query(param)
@@ -34,17 +36,21 @@ class Request {
                         },100);
                         reject();
                     }else{
-                        setTimeout(() => {
-                            ReactDOM.unmountComponentAtNode(loadingNode);
-                        }, 300);
+                        if(!hideLoading) {
+                            setTimeout(() => {
+                                ReactDOM.unmountComponentAtNode(loadingNode);
+                            }, 300);
+                        }
                         Request.parserResult(res.body, resolve, reject);
                     }
                 });
         });
     }
 
-    post(url, param){
-        renderLoading();
+    post(url, param, hideLoading){
+        if(!hideLoading) {
+            renderLoading();
+        }
         return new Promise((resolve, reject) => {
             Superagent['post'](url)
                 .send(param)
@@ -60,9 +66,11 @@ class Request {
                         }, 100);
                         reject();
                     } else {
-                        setTimeout(() => {
-                            ReactDOM.unmountComponentAtNode(loadingNode);
-                        }, 300);
+                        if(!hideLoading) {
+                            setTimeout(() => {
+                                ReactDOM.unmountComponentAtNode(loadingNode);
+                            }, 300);
+                        }
                         Request.parserResult(res.body, resolve, reject);
                     }
                 });
