@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Management from "./component/management/Management";
 
-import Home from "./component/home/Home";
 import Login from "./component/login/Login";
 
 
@@ -12,7 +11,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 const SliderComponent = () => (
     <Switch>
-        <Route exact path='/' component={Home} />
         <Route path="/management/" component={Management}/>
         <Route path="/login" component={Login}/>
     </Switch>
