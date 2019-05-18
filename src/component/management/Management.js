@@ -5,7 +5,7 @@ import ArticleList from "./article-list/ArticleList";
 import ArticleEditor from "./article-editor/ArticleEditor";
 import TagList from "./tag-list/TagList";
 import BookList from "./group/books/BookList";
-import CollectionList from "./group/collections/CollectionList";
+import CollectionList from "./group/collection/CollectionList";
 
 const {
     Content, Sider,

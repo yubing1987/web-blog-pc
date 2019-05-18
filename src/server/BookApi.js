@@ -7,8 +7,17 @@ class BookApi {
         return request.get("/api/manage/group/list.json", {type: 'BOOK', page: page, size: 10, key: key});
     }
 
+    static getCollectionList(page, key){
+        return request.get("/api/manage/group/list.json", {type: 'COLLECTION', page: page, size: 10, key: key});
+    }
+
     static addBook(book){
         book["type"] = 'BOOK';
+        return request.post("/api/manage/group.json", book);
+    }
+
+    static addCollection(book){
+        book["type"] = 'COLLECTION';
         return request.post("/api/manage/group.json", book);
     }
 

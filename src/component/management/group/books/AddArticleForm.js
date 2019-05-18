@@ -4,14 +4,12 @@ import ArticleApi from "../../../../server/ArticleApi";
 
 const Option = Select.Option;
 let timeout;
-let currentValue;
 
 function fetch(value, callback) {
     if (timeout) {
         clearTimeout(timeout);
         timeout = null;
     }
-    currentValue = value;
 
     function fake() {
         if(value !== '') {
@@ -57,7 +55,7 @@ class AddArticleForm extends Component {
         return (
             <Modal
                 visible={visible}
-                title={'添加书籍'}
+                title={'添加文章'}
                 okText="保存"
                 cancelText='取消'
                 onCancel={() => {this.onCancel()}}
@@ -102,10 +100,20 @@ class AddArticleForm extends Component {
             return;
         }
         this.props.onAdd(this.state.valueMap[this.state.value], this.state.level);
+        this.setState({
+            data: [],
+            value: undefined,
+            valueMap: {}
+        })
     }
 
     onCancel(){
         this.props.onCancel();
+        this.setState({
+            data: [],
+            value: undefined,
+            valueMap: {}
+        })
     }
 }
 
